@@ -26,7 +26,8 @@ public class FermeVue extends Application
 	protected MoutonVue moutonVue = null;
 	protected MoutonControleur moutonControleur = null;
 	protected ListeMoutonVue listeMoutonVue = null;
-
+	protected FormulaireAjouterTroupeauVue formulaireAjouterTroupeauVue = null;
+	
 	protected ListeTroupeauVue listeTroupeauVue = null;
 	protected ListeTroupeauControleur listeTroupeauControleur = null;
 	
@@ -42,7 +43,7 @@ public class FermeVue extends Application
 		this.listeTroupeauVue.setControleur(listeTroupeauControleur);
 		
 		// test
-		/*
+		
 		List<Mouton> listeMoutons = new ArrayList<Mouton>();
 		listeMoutons.add(new Mouton("Dolly"));
 		listeMoutons.add(new Mouton("Ardoise"));
@@ -51,7 +52,7 @@ public class FermeVue extends Application
 		listeMoutons.add(new Mouton("Atchoum"));
 		this.listeMoutonVue = new ListeMoutonVue();
 		this.listeMoutonVue.afficherListeMouton(listeMoutons);
-		*/
+		
 		
 		// test
 		
@@ -61,9 +62,11 @@ public class FermeVue extends Application
 		listeTroupeau.add(new Troupeau("Les aventureux"));
 		this.listeTroupeauVue.afficherListeTroupeau(listeTroupeau);
 		
+		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
+		
 		this.scenePrincipale = scenePrincipale;
 		scenePrincipale.setTitle("Gestion de la ferme");
-		scenePrincipale.setScene(new Scene(listeTroupeauVue, 500,500));
+		scenePrincipale.setScene(new Scene(this.formulaireAjouterTroupeauVue, 500,500));
 		scenePrincipale.show();
 	}
 	
