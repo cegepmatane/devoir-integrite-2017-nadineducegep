@@ -3,6 +3,7 @@ package com.fermedelest.appinventaire.vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fermedelest.appinventaire.controleur.ListeTroupeauControleur;
 import com.fermedelest.appinventaire.controleur.MoutonControleur;
 import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
@@ -25,7 +26,9 @@ public class FermeVue extends Application
 	protected MoutonVue moutonVue = null;
 	protected MoutonControleur moutonControleur = null;
 	protected ListeMoutonVue listeMoutonVue = null;
+
 	protected ListeTroupeauVue listeTroupeauVue = null;
+	protected ListeTroupeauControleur listeTroupeauControleur = null;
 	
 	@Override
 	public void start(Stage scenePrincipale) throws Exception 
@@ -33,6 +36,10 @@ public class FermeVue extends Application
 		this.moutonVue = new MoutonVue();
 		this.moutonControleur = new MoutonControleur(moutonVue);
 		this.moutonVue.setControleur(moutonControleur);
+		
+		this.listeTroupeauVue = new ListeTroupeauVue();
+		this.listeTroupeauControleur = new ListeTroupeauControleur(listeTroupeauVue);
+		this.listeTroupeauVue.setControleur(listeTroupeauControleur);
 		
 		// test
 		/*
@@ -52,7 +59,6 @@ public class FermeVue extends Application
 		listeTroupeau.add(new Troupeau("Les peureux"));
 		listeTroupeau.add(new Troupeau("Les frises"));
 		listeTroupeau.add(new Troupeau("Les aventureux"));
-		this.listeTroupeauVue = new ListeTroupeauVue();
 		this.listeTroupeauVue.afficherListeTroupeau(listeTroupeau);
 		
 		this.scenePrincipale = scenePrincipale;

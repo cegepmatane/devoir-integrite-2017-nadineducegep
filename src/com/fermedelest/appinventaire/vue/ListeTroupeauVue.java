@@ -2,9 +2,12 @@ package com.fermedelest.appinventaire.vue;
 
 import java.util.List;
 
+import com.fermedelest.appinventaire.controleur.ListeTroupeauControleur;
 import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.TilePane;
@@ -23,7 +26,19 @@ public class ListeTroupeauVue extends VBox
 	
 	public void afficherListeTroupeau(List<Troupeau> listeTroupeau)
 	{
-		this.getChildren().add(new Button("Ajouter"));
+		
+		Button actionAjouter = new Button("Ajouter");
+		actionAjouter.setOnAction(new EventHandler<ActionEvent>()
+			{
+				@Override
+				public void handle(ActionEvent evenement) 
+				{
+					listeTroupeauControleur.naviguerFormulaireAjouter();
+				}
+			});
+		
+		this.getChildren().add(actionAjouter);
+		
 		this.listeTroupeau = listeTroupeau;
 		for(Troupeau troupeau:listeTroupeau)
 		{
@@ -35,6 +50,12 @@ public class ListeTroupeauVue extends VBox
 			this.getChildren().add(ligneVisuelle);
 		}
 		
+	}
+	
+	protected ListeTroupeauControleur listeTroupeauControleur = null;
+	public void setControleur(ListeTroupeauControleur listeTroupeauControleur)
+	{
+		this.listeTroupeauControleur = listeTroupeauControleur;
 	}
 	
 }
