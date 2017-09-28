@@ -8,8 +8,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.fermedelest.appinventaire.accesseur.MoutonDAO;
+import com.fermedelest.appinventaire.accesseur.TroupeauDAO;
 import com.fermedelest.appinventaire.controleur.MoutonControleur;
 import com.fermedelest.appinventaire.modele.Mouton;
+import com.fermedelest.appinventaire.modele.Troupeau;
 import com.fermedelest.appinventaire.vue.FermeVue;
 
 public class FermeDeLEst {
@@ -21,7 +23,16 @@ public class FermeDeLEst {
 		
 		//MoutonControleur controleurMouton = new MoutonControleur(moutonVue);
 		//controleurMouton.start();
+
+		/*
+		TroupeauDAO accesseurTroupeau = new TroupeauDAO();
+		List<Troupeau> listeTroupeaux = accesseurTroupeau.listerTousLesTroupeaux();
 		
+		for(Troupeau troupeau:listeTroupeaux)
+		{
+			System.out.println(troupeau.getNom());
+		}
+		*/
 		/*
 		MoutonDAO accesseurMouton = new MoutonDAO();
 		List<Mouton> listeMoutons = accesseurMouton.listerTousLesMoutons();

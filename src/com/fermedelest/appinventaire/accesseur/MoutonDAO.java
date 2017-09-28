@@ -11,31 +11,12 @@ import java.util.List;
 import com.fermedelest.appinventaire.modele.Mouton;
 
 public class MoutonDAO 
-{
-	public String BASEDEDONNEES_DRIVER = "org.postgresql.Driver";
-	public String BASEDEDONNEES_URL = "jdbc:postgresql://localhost:5432/fermedelest";
-	public String BASEDEDONNEES_USAGER = "postgres";
-	public String BASEDEDONNEES_MOTDEPASSE = "informatique";
-	
+{	
 	private Connection connection = null;
 	
 	public MoutonDAO()
 	{
-		try {
-			Class.forName(BASEDEDONNEES_DRIVER);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			connection = DriverManager.getConnection(BASEDEDONNEES_URL, BASEDEDONNEES_USAGER, BASEDEDONNEES_MOTDEPASSE);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		//connection.close();			
-
-		
+		this.connection = AccesseurConnection.getConnection();
 	}
 	
 	public List<Mouton> listerTousLesMoutons()
