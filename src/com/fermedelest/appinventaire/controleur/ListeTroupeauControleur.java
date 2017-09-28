@@ -6,17 +6,18 @@ import com.fermedelest.appinventaire.vue.ListeTroupeauVue;
 public class ListeTroupeauControleur {
 
 	protected ListeTroupeauVue listeTroupeauVue = null;
+	protected FermeVue fermeVue;
 	
-	public ListeTroupeauControleur(ListeTroupeauVue listeTroupeauVue)
+	public ListeTroupeauControleur(ListeTroupeauVue listeTroupeauVue, FermeVue fermeVue)
 	{
 		this.listeTroupeauVue = listeTroupeauVue;
+		this.fermeVue = fermeVue;
 	}
 	
 	public void naviguerFormulaireAjouter()
 	{
-		System.out.println("Ajouter !");
-		FermeVue fermeVue = FermeVue.getInstance();
-		//fermeVue.naviguerFormulaireAjouterTroupeau();
+		fermeVue.naviguerFormulaireAjouterTroupeau();
 	}
+	
 	
 }

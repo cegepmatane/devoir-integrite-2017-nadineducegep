@@ -35,7 +35,7 @@ public class FermeVue extends Application
 	
 	// Fin Singleton
 	
-	protected Stage scenePrincipale;
+	protected Stage scenePrincipale = null;
 		
 	protected MoutonVue moutonVue = null;
 	protected MoutonControleur moutonControleur = null;
@@ -55,7 +55,7 @@ public class FermeVue extends Application
 		this.moutonVue.setControleur(moutonControleur);
 		
 		this.listeTroupeauVue = new ListeTroupeauVue();
-		this.listeTroupeauControleur = new ListeTroupeauControleur(listeTroupeauVue);
+		this.listeTroupeauControleur = new ListeTroupeauControleur(listeTroupeauVue, this);
 		this.listeTroupeauVue.setControleur(listeTroupeauControleur);
 		
 		// test
@@ -81,13 +81,18 @@ public class FermeVue extends Application
 		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
 		
 		scenePrincipale.setTitle("Gestion de la ferme");
-		scenePrincipale.setScene(new Scene(this.listeTroupeauVue, 500,500));
+		Scene scene = new Scene(this.listeTroupeauVue, 500,500);
+		scenePrincipale.setScene(scene);
 		scenePrincipale.show();
 	}
+	protected Scene scene = null;
 	
 	public void naviguerFormulaireAjouterTroupeau()
 	{
-		scenePrincipale.setScene(new Scene(this.formulaireAjouterTroupeauVue, 500,500));		
+		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
+		System.out.println(this.scenePrincipale);
+		this.scenePrincipale.setScene(new Scene(this.formulaireAjouterTroupeauVue, 500,500));	
+		//scene.setRoot(this.formulaireAjouterTroupeauVue);
 	}
 	
 	
