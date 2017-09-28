@@ -14,7 +14,7 @@ public class MoutonControleur
 		this.moutonVue = moutonVue;
 		
 		// DEBUT TEST
-		Mouton moutonCoucou = new Mouton();
+		Mouton moutonCoucou = new Mouton("");
 		moutonCoucou.setNom("coucou");		
 		this.moutonVue.afficherMouton(moutonCoucou);
 		// FIN TEST

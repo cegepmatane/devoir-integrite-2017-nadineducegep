@@ -53,8 +53,7 @@ public class MoutonDAO
 					String nom = curseurMouton.getString("nom");
 					String description = curseurMouton.getString("description");
 					
-					Mouton mouton = new Mouton();
-					mouton.setNom(nom);
+					Mouton mouton = new Mouton(nom);
 					mouton.setDescription(description);
 					
 					listeDesMoutons.add(mouton);
@@ -81,8 +80,7 @@ public class MoutonDAO
 			String nom = curseurMouton.getString("nom");
 			String description = curseurMouton.getString("description");
 				
-			mouton = new Mouton();
-			mouton.setNom(nom);
+			mouton = new Mouton(nom);
 			mouton.setDescription(description);
 			
 		} catch (SQLException e) {

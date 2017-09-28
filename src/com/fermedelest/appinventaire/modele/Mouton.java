@@ -7,6 +7,13 @@ public class Mouton
 	protected char couleur;
 	protected String sousespece;
 	protected String description;
+	protected Troupeau troupeau;
+	
+	public Mouton(String nom)
+	{
+		this.nom = nom;
+	}
+	
 	public String getNom() {
 		return nom;
 	}

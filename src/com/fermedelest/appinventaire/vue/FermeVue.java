@@ -1,5 +1,8 @@
 package com.fermedelest.appinventaire.vue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fermedelest.appinventaire.controleur.MoutonControleur;
 import com.fermedelest.appinventaire.modele.Mouton;
 
@@ -29,7 +32,16 @@ public class FermeVue extends Application
 		this.moutonControleur = new MoutonControleur(moutonVue);
 		this.moutonVue.setControleur(moutonControleur);
 		
+		// test
+		List<Mouton> listeMoutons = new ArrayList<Mouton>();
+		listeMoutons.add(new Mouton("Dolly"));
+		listeMoutons.add(new Mouton("Ardoise"));
+		listeMoutons.add(new Mouton("Lactee"));
+		listeMoutons.add(new Mouton("Laineux"));
+		listeMoutons.add(new Mouton("Atchoum"));
+		//
 		this.listeMoutonVue = new ListeMoutonVue();
+		this.listeMoutonVue.afficherListeMouton(listeMoutons);
 		
 		this.scenePrincipale = scenePrincipale;
 		scenePrincipale.setTitle("Gestion de la ferme");
