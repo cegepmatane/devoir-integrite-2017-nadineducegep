@@ -18,7 +18,7 @@ public class FermeDeLEst {
 
 	public static void main(String[] args) 
 	{		
-		FermeVue fermeVue = new FermeVue();
+		FermeVue fermeVue = FermeVue.getInstance();
 		fermeVue.launch(FermeVue.class, args);
 		
 		//MoutonControleur controleurMouton = new MoutonControleur(moutonVue);

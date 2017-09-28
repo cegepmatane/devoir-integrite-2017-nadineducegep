@@ -17,12 +17,26 @@ import javafx.stage.Stage;
 
 public class FermeVue extends Application 
 {
-	protected Stage scenePrincipale;
+	// Singleton
+	protected static FermeVue fermeVue = null;
 	
+	public static FermeVue getInstance()
+	{
+		if(null == fermeVue)
+		{
+			fermeVue = new FermeVue();
+		}
+		
+		return fermeVue;
+	}
 	public FermeVue()
 	{
 	}
 	
+	// Fin Singleton
+	
+	protected Stage scenePrincipale;
+		
 	protected MoutonVue moutonVue = null;
 	protected MoutonControleur moutonControleur = null;
 	protected ListeMoutonVue listeMoutonVue = null;
@@ -34,6 +48,8 @@ public class FermeVue extends Application
 	@Override
 	public void start(Stage scenePrincipale) throws Exception 
 	{
+		this.scenePrincipale = scenePrincipale;
+		
 		this.moutonVue = new MoutonVue();
 		this.moutonControleur = new MoutonControleur(moutonVue);
 		this.moutonVue.setControleur(moutonControleur);
@@ -64,11 +80,16 @@ public class FermeVue extends Application
 		
 		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
 		
-		this.scenePrincipale = scenePrincipale;
 		scenePrincipale.setTitle("Gestion de la ferme");
-		scenePrincipale.setScene(new Scene(this.formulaireAjouterTroupeauVue, 500,500));
+		scenePrincipale.setScene(new Scene(this.listeTroupeauVue, 500,500));
 		scenePrincipale.show();
 	}
+	
+	public void naviguerFormulaireAjouterTroupeau()
+	{
+		scenePrincipale.setScene(new Scene(this.formulaireAjouterTroupeauVue, 500,500));		
+	}
+	
 	
 }
 

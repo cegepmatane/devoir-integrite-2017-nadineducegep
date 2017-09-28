@@ -1,5 +1,6 @@
 package com.fermedelest.appinventaire.controleur;
 
+import com.fermedelest.appinventaire.vue.FermeVue;
 import com.fermedelest.appinventaire.vue.ListeTroupeauVue;
 
 public class ListeTroupeauControleur {
@@ -13,7 +14,9 @@ public class ListeTroupeauControleur {
 	
 	public void naviguerFormulaireAjouter()
 	{
-		System.out.println("Ajouter !");	
+		System.out.println("Ajouter !");
+		FermeVue fermeVue = FermeVue.getInstance();
+		//fermeVue.naviguerFormulaireAjouterTroupeau();
 	}
 	
 }
