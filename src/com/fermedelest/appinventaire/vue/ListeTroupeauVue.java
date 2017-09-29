@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 public class ListeTroupeauVue extends VBox
 {
 	protected List<Troupeau> listeTroupeau = null;
+	protected ListeTroupeauControleur listeTroupeauControleur = null;
 	
 	public ListeTroupeauVue()
 	{
@@ -52,7 +53,6 @@ public class ListeTroupeauVue extends VBox
 		
 	}
 	
-	protected ListeTroupeauControleur listeTroupeauControleur = null;
 	public void setControleur(ListeTroupeauControleur listeTroupeauControleur)
 	{
 		this.listeTroupeauControleur = listeTroupeauControleur;

@@ -3,6 +3,7 @@ package com.fermedelest.appinventaire.vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fermedelest.appinventaire.controleur.FormulaireAjouterTroupeauControleur;
 import com.fermedelest.appinventaire.controleur.ListeTroupeauControleur;
 import com.fermedelest.appinventaire.controleur.MoutonControleur;
 import com.fermedelest.appinventaire.modele.Mouton;
@@ -44,6 +45,7 @@ public class FermeVue extends Application
 	
 	protected ListeTroupeauVue listeTroupeauVue = null;
 	protected ListeTroupeauControleur listeTroupeauControleur = null;
+	protected FormulaireAjouterTroupeauControleur formulaireAjouterTroupeauControleur = null;
 	
 	@Override
 	public void start(Stage scenePrincipale) throws Exception 
@@ -58,8 +60,11 @@ public class FermeVue extends Application
 		this.listeTroupeauControleur = new ListeTroupeauControleur(listeTroupeauVue, this);
 		this.listeTroupeauVue.setControleur(listeTroupeauControleur);
 		
-		// test
-		
+		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
+		this.formulaireAjouterTroupeauControleur = new FormulaireAjouterTroupeauControleur(this.formulaireAjouterTroupeauVue, this);
+		this.formulaireAjouterTroupeauVue.setControleur(this.formulaireAjouterTroupeauControleur);
+
+		// test		
 		List<Mouton> listeMoutons = new ArrayList<Mouton>();
 		listeMoutons.add(new Mouton("Dolly"));
 		listeMoutons.add(new Mouton("Ardoise"));
@@ -78,7 +83,6 @@ public class FermeVue extends Application
 		listeTroupeau.add(new Troupeau("Les aventureux"));
 		this.listeTroupeauVue.afficherListeTroupeau(listeTroupeau);
 		
-		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
 		
 		scenePrincipale.setTitle("Gestion de la ferme");
 		Scene scene = new Scene(this.listeTroupeauVue, 500,500);
@@ -89,10 +93,7 @@ public class FermeVue extends Application
 	
 	public void naviguerFormulaireAjouterTroupeau()
 	{
-		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
-		System.out.println(this.scenePrincipale);
 		this.scenePrincipale.setScene(new Scene(this.formulaireAjouterTroupeauVue, 500,500));	
-		//scene.setRoot(this.formulaireAjouterTroupeauVue);
 	}
 	
 	

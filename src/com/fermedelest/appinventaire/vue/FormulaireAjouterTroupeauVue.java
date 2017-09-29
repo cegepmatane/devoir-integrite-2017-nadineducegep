@@ -1,7 +1,10 @@
 package com.fermedelest.appinventaire.vue;
 
+import com.fermedelest.appinventaire.controleur.FormulaireAjouterTroupeauControleur;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -13,6 +16,7 @@ public class FormulaireAjouterTroupeauVue extends VBox
 	
 	protected TextField champsNom = null;
 	protected TextField champsEcurie = null;
+	protected FormulaireAjouterTroupeauControleur formulaireAjouterTroupeauControleur = null;
 	
 	public FormulaireAjouterTroupeauVue()
 	{
@@ -28,7 +32,19 @@ public class FormulaireAjouterTroupeauVue extends VBox
 		ligneEcurie.getChildren().add(this.champsEcurie);
 		this.getChildren().add(ligneEcurie);
 		
-		this.getChildren().add(new Button("Enregistrer"));
+		Button actionEnregistrer = new Button("Enregistrer");
+		
+		actionEnregistrer.setOnAction(new EventHandler<ActionEvent>()
+		{
+			@Override
+			public void handle(ActionEvent arg0) 
+			{			
+				formulaireAjouterTroupeauControleur.ajouterTroupeau();
+			}
+			
+		});
+		
+		this.getChildren().add(actionEnregistrer);
 	}
 	
 	public Troupeau lireFormulaire()
@@ -38,5 +54,10 @@ public class FormulaireAjouterTroupeauVue extends VBox
 		Troupeau troupeau = new Troupeau(nom);
 		troupeau.setEcurie(ecurie);
 		return troupeau;
+	}
+
+	public void setControleur(FormulaireAjouterTroupeauControleur controleur)
+	{
+		this.formulaireAjouterTroupeauControleur = controleur;
 	}
 }
