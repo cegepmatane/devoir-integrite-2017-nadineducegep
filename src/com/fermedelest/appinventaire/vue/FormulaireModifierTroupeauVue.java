@@ -1,6 +1,6 @@
 package com.fermedelest.appinventaire.vue;
 
-import com.fermedelest.appinventaire.controleur.FormulaireAjouterTroupeauControleur;
+import com.fermedelest.appinventaire.controleur.EditeurTroupeau;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
 import javafx.event.ActionEvent;
@@ -16,7 +16,7 @@ public class FormulaireModifierTroupeauVue extends VBox
 	
 	protected TextField champsNom = null;
 	protected TextField champsEcurie = null;
-	protected FormulaireAjouterTroupeauControleur formulaireAjouterTroupeauControleur = null;
+	protected EditeurTroupeau formulaireAjouterTroupeauControleur = null;
 	
 	public FormulaireModifierTroupeauVue()
 	{
@@ -56,7 +56,7 @@ public class FormulaireModifierTroupeauVue extends VBox
 		return troupeau;
 	}
 
-	public void setControleur(FormulaireAjouterTroupeauControleur controleur)
+	public void setControleur(EditeurTroupeau controleur)
 	{
 		this.formulaireAjouterTroupeauControleur = controleur;
 	}

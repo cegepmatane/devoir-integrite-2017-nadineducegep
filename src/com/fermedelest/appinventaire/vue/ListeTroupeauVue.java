@@ -2,7 +2,7 @@ package com.fermedelest.appinventaire.vue;
 
 import java.util.List;
 
-import com.fermedelest.appinventaire.controleur.ListeTroupeauControleur;
+import com.fermedelest.appinventaire.controleur.EditeurTroupeau;
 import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
 public class ListeTroupeauVue extends VBox
 {
 	protected List<Troupeau> listeTroupeau = null;
-	protected ListeTroupeauControleur listeTroupeauControleur = null;
+	protected EditeurTroupeau listeTroupeauControleur = null;
 	
 	public ListeTroupeauVue()
 	{
@@ -64,7 +64,7 @@ public class ListeTroupeauVue extends VBox
 		
 	}
 	
-	public void setControleur(ListeTroupeauControleur listeTroupeauControleur)
+	public void setControleur(EditeurTroupeau listeTroupeauControleur)
 	{
 		this.listeTroupeauControleur = listeTroupeauControleur;
 	}

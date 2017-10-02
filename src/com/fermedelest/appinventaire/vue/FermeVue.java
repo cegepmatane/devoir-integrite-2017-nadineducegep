@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fermedelest.appinventaire.accesseur.TroupeauDAO;
-import com.fermedelest.appinventaire.controleur.FormulaireAjouterTroupeauControleur;
-import com.fermedelest.appinventaire.controleur.ListeTroupeauControleur;
+import com.fermedelest.appinventaire.controleur.EditeurTroupeau;
 import com.fermedelest.appinventaire.controleur.MoutonControleur;
 import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
@@ -45,8 +44,7 @@ public class FermeVue extends Application
 	protected FormulaireAjouterTroupeauVue formulaireAjouterTroupeauVue = null;
 	
 	protected ListeTroupeauVue listeTroupeauVue = null;
-	protected ListeTroupeauControleur listeTroupeauControleur = null;
-	protected FormulaireAjouterTroupeauControleur formulaireAjouterTroupeauControleur = null;
+	protected EditeurTroupeau editeurTroupeauControleur = null;
 	
 	protected Scene sceneListeTroupeau = null;
 	protected Scene sceneFormulaireAjouterTroupeau = null;
@@ -62,14 +60,16 @@ public class FermeVue extends Application
 		this.moutonControleur = new MoutonControleur(moutonVue);
 		this.moutonVue.setControleur(moutonControleur);
 		
+		this.editeurTroupeauControleur = new EditeurTroupeau(this);
+		
 		this.listeTroupeauVue = new ListeTroupeauVue();
-		this.listeTroupeauControleur = new ListeTroupeauControleur(listeTroupeauVue, this);
-		this.listeTroupeauVue.setControleur(listeTroupeauControleur);
+		this.editeurTroupeauControleur.setListeTroupeauVue(listeTroupeauVue);
+		this.listeTroupeauVue.setControleur(editeurTroupeauControleur);
 		this.sceneListeTroupeau = new Scene(this.listeTroupeauVue, 500,500);
 		
 		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
-		this.formulaireAjouterTroupeauControleur = new FormulaireAjouterTroupeauControleur(this.formulaireAjouterTroupeauVue, this);
-		this.formulaireAjouterTroupeauVue.setControleur(this.formulaireAjouterTroupeauControleur);
+		this.editeurTroupeauControleur.setFormulaireAjouterTroupeauVue(formulaireAjouterTroupeauVue);
+		this.formulaireAjouterTroupeauVue.setControleur(this.editeurTroupeauControleur);
 		this.sceneFormulaireAjouterTroupeau = new Scene(this.formulaireAjouterTroupeauVue, 500,500);
 
 		// test		
@@ -100,11 +100,11 @@ public class FermeVue extends Application
 	}
 	public void naviguerFormulaireAjouterTroupeau()
 	{
-		//this.scenePrincipale.setScene(sceneFormulaireModifierTroupeau);	
+		this.scenePrincipale.setScene(sceneFormulaireAjouterTroupeau);	
 	}
 	public void naviguerFormulaireModifierTroupeau()
 	{
-		this.scenePrincipale.setScene(sceneFormulaireAjouterTroupeau);	
+		//this.scenePrincipale.setScene(sceneFormulaireModifierTroupeau);	
 	}
 	
 	
