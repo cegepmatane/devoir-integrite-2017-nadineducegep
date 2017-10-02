@@ -19,7 +19,7 @@ public class FormulaireAjouterTroupeauControleur {
 	{
 		Troupeau troupeau = this.formulaireAjouterTroupeauVue.lireFormulaire();
 		TroupeauDAO troupeauDAO = new TroupeauDAO();
-		//troupeauDAO.ajouterTroupeau(troupeau);
+		troupeauDAO.ajouterTroupeau(troupeau);
 		System.out.println("Le troupeau est ajoute");
 	}
 	

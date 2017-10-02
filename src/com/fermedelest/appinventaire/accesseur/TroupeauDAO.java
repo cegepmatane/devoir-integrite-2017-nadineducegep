@@ -70,4 +70,21 @@ public class TroupeauDAO {
 		return troupeau;
 	}
 	
+	
+	public void ajouterTroupeau(Troupeau troupeau)
+	{
+		try {
+			
+			Statement requeteAjouterTroupeau = connection.createStatement();
+			requeteAjouterTroupeau.executeUpdate(
+					"INSERT INTO troupeau(nom, ecurie) VALUES('"+troupeau.getNom()+"','"+troupeau.getEcurie()+"')");
+			// TODO changer en requete preparee
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 }
