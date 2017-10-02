@@ -25,16 +25,18 @@ public class TroupeauDAO {
 			Statement requeteListeTroupeaus = null;
 			try {
 				requeteListeTroupeaus = connection.createStatement();
-				ResultSet curseurTroupeau = requeteListeTroupeaus.executeQuery("SELECT nom, ecurie FROM troupeau");
+				ResultSet curseurTroupeau = requeteListeTroupeaus.executeQuery("SELECT * FROM troupeau");
 				
 				//System.out.println("avant");
 				while(curseurTroupeau.next())
 				{
+					int id = curseurTroupeau.getInt("id_troupeau");
 					String nom = curseurTroupeau.getString("nom");
 					String ecurie = curseurTroupeau.getString("ecurie");
 					
 					Troupeau troupeau = new Troupeau(nom);
 					troupeau.setEcurie(ecurie);
+					troupeau.setId(id);
 					
 					listeDesTroupeaus.add(troupeau);
 				}

@@ -50,7 +50,7 @@ public class ListeTroupeauVue extends VBox
 				@Override
 				public void handle(ActionEvent evenement) 
 				{
-					editeurTroupeauControleur.naviguerFormulaireModifier();
+					editeurTroupeauControleur.naviguerFormulaireModifier(troupeau);
 				}
 			});
 			

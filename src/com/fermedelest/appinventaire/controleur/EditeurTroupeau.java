@@ -36,8 +36,9 @@ public class EditeurTroupeau {
 		fermeVue.naviguerFormulaireAjouterTroupeau();
 	}
 	
-	public void naviguerFormulaireModifier()
+	public void naviguerFormulaireModifier(Troupeau troupeau)
 	{
+		System.out.println("Naviguer pour modifier le troupeau " + troupeau.getId());
 		fermeVue.naviguerFormulaireModifierTroupeau();
 	}
 	
