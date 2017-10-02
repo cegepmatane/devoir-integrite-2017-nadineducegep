@@ -4,7 +4,7 @@
 
 CREATE TABLE public.mouton
 (
-    id_mouton integer NOT NULL,
+    id_mouton serial NOT NULL,
     nom text COLLATE pg_catalog."default",
     naissance date,
     sexe character(1) COLLATE pg_catalog."default",
@@ -28,7 +28,7 @@ ALTER TABLE public.mouton
 
 CREATE TABLE public.troupeau
 (
-    id_troupeau integer NOT NULL,
+    id_troupeau serial NOT NULL,
     nom text COLLATE pg_catalog."default",
     ecurie text COLLATE pg_catalog."default",
     CONSTRAINT troupeau_pkey PRIMARY KEY (id_troupeau)
