@@ -89,4 +89,19 @@ public class TroupeauDAO {
 	}
 	
 	
+	public void modifierTroupeau(Troupeau troupeau)
+	{
+		try {
+			
+			Statement requeteModifierTroupeau = connection.createStatement();
+			requeteModifierTroupeau.executeUpdate(
+					"UPDATE troupeau SET nom = '"+troupeau.getNom()+"', ecurie = '"+troupeau.getEcurie()+"' WHERE id_troupeau = "+troupeau.getId());
+			// TODO changer en requete preparee
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }

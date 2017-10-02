@@ -51,7 +51,14 @@ public class EditeurTroupeau {
 		troupeauDAO.ajouterTroupeau(troupeau);
 		System.out.println("Le troupeau est ajoute");
 		this.fermeVue.naviguerListeTroupeau();
-		
+	}
+	public void modifierTroupeau()
+	{
+		Troupeau troupeau = this.formulaireModifierTroupeauVue.lireFormulaire();
+		TroupeauDAO troupeauDAO = new TroupeauDAO();
+		troupeauDAO.modifierTroupeau(troupeau);
+		System.out.println("Le troupeau est modifier");
+		this.fermeVue.naviguerListeTroupeau();
 	}
 	
 }

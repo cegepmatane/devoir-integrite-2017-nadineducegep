@@ -13,10 +13,11 @@ import javafx.scene.layout.VBox;
 
 public class FormulaireModifierTroupeauVue extends VBox 
 {
-	
+	protected Troupeau troupeau = null;
+
 	protected TextField champsNom = null;
 	protected TextField champsEcurie = null;
-	protected EditeurTroupeau formulaireAjouterTroupeauControleur = null;
+	protected EditeurTroupeau editeurTroupeau = null;
 	
 	public FormulaireModifierTroupeauVue()
 	{
@@ -39,31 +40,33 @@ public class FormulaireModifierTroupeauVue extends VBox
 			@Override
 			public void handle(ActionEvent arg0) 
 			{			
-				formulaireAjouterTroupeauControleur.ajouterTroupeau();
+				editeurTroupeau.modifierTroupeau();
 			}
 			
 		});
 		
 		this.getChildren().add(actionEnregistrer);
 	}
-	
+
 	public Troupeau lireFormulaire()
 	{
 		String nom = this.champsNom.getText();
 		String ecurie = this.champsEcurie.getText();
-		Troupeau troupeau = new Troupeau(nom);
+		
+		troupeau.setNom(nom);
 		troupeau.setEcurie(ecurie);
 		return troupeau;
 	}
 	
 	public void afficherTroupeau(Troupeau troupeau)
 	{
+		this.troupeau = troupeau;
 		this.champsNom.setText(troupeau.getNom());
 		this.champsEcurie.setText(troupeau.getEcurie());
 	}
 
 	public void setControleur(EditeurTroupeau controleur)
 	{
-		this.formulaireAjouterTroupeauControleur = controleur;
+		this.editeurTroupeau = controleur;
 	}
 }
