@@ -55,6 +55,12 @@ public class FormulaireModifierTroupeauVue extends VBox
 		troupeau.setEcurie(ecurie);
 		return troupeau;
 	}
+	
+	public void afficherTroupeau(Troupeau troupeau)
+	{
+		this.champsNom.setText(troupeau.getNom());
+		this.champsEcurie.setText(troupeau.getEcurie());
+	}
 
 	public void setControleur(EditeurTroupeau controleur)
 	{
