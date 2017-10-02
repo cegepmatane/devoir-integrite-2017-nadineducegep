@@ -21,6 +21,8 @@ public class FormulaireAjouterTroupeauControleur {
 		TroupeauDAO troupeauDAO = new TroupeauDAO();
 		troupeauDAO.ajouterTroupeau(troupeau);
 		System.out.println("Le troupeau est ajoute");
+		this.fermeVue.naviguerListeTroupeau();
+		
 	}
 	
 	

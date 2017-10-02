@@ -47,11 +47,14 @@ public class FermeVue extends Application
 	protected ListeTroupeauControleur listeTroupeauControleur = null;
 	protected FormulaireAjouterTroupeauControleur formulaireAjouterTroupeauControleur = null;
 	
+	protected Scene sceneListeTroupeau = null;
+	protected Scene sceneFormulaireAjouterTroupeau = null;
+	
 	@Override
 	public void start(Stage scenePrincipale) throws Exception 
 	{
 		this.scenePrincipale = scenePrincipale;
-		
+	
 		this.moutonVue = new MoutonVue();
 		this.moutonControleur = new MoutonControleur(moutonVue);
 		this.moutonVue.setControleur(moutonControleur);
@@ -59,10 +62,12 @@ public class FermeVue extends Application
 		this.listeTroupeauVue = new ListeTroupeauVue();
 		this.listeTroupeauControleur = new ListeTroupeauControleur(listeTroupeauVue, this);
 		this.listeTroupeauVue.setControleur(listeTroupeauControleur);
+		this.sceneListeTroupeau = new Scene(this.listeTroupeauVue, 500,500);
 		
 		this.formulaireAjouterTroupeauVue = new FormulaireAjouterTroupeauVue();
 		this.formulaireAjouterTroupeauControleur = new FormulaireAjouterTroupeauControleur(this.formulaireAjouterTroupeauVue, this);
 		this.formulaireAjouterTroupeauVue.setControleur(this.formulaireAjouterTroupeauControleur);
+		this.sceneFormulaireAjouterTroupeau = new Scene(this.formulaireAjouterTroupeauVue, 500,500);
 
 		// test		
 		List<Mouton> listeMoutons = new ArrayList<Mouton>();
@@ -85,17 +90,20 @@ public class FermeVue extends Application
 		
 		
 		scenePrincipale.setTitle("Gestion de la ferme");
-		Scene scene = new Scene(this.listeTroupeauVue, 500,500);
-		scenePrincipale.setScene(scene);
+		scenePrincipale.setScene(this.sceneListeTroupeau);
 		scenePrincipale.show();
 	}
 	protected Scene scene = null;
 	
 	public void naviguerFormulaireAjouterTroupeau()
 	{
-		this.scenePrincipale.setScene(new Scene(this.formulaireAjouterTroupeauVue, 500,500));	
+		this.scenePrincipale.setScene(sceneFormulaireAjouterTroupeau);	
 	}
 	
+	public void naviguerListeTroupeau()
+	{
+		this.scenePrincipale.setScene(this.sceneListeTroupeau);	
+	}
 	
 }
 
