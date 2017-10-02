@@ -3,6 +3,7 @@ package com.fermedelest.appinventaire.vue;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fermedelest.appinventaire.accesseur.TroupeauDAO;
 import com.fermedelest.appinventaire.controleur.FormulaireAjouterTroupeauControleur;
 import com.fermedelest.appinventaire.controleur.ListeTroupeauControleur;
 import com.fermedelest.appinventaire.controleur.MoutonControleur;
@@ -49,11 +50,13 @@ public class FermeVue extends Application
 	
 	protected Scene sceneListeTroupeau = null;
 	protected Scene sceneFormulaireAjouterTroupeau = null;
+	protected TroupeauDAO troupeauDAO = null; // TODO peut-être ameliorer cette architecture
 	
 	@Override
 	public void start(Stage scenePrincipale) throws Exception 
 	{
 		this.scenePrincipale = scenePrincipale;
+		this.troupeauDAO = new TroupeauDAO();
 	
 		this.moutonVue = new MoutonVue();
 		this.moutonControleur = new MoutonControleur(moutonVue);
@@ -79,15 +82,7 @@ public class FermeVue extends Application
 		this.listeMoutonVue = new ListeMoutonVue();
 		this.listeMoutonVue.afficherListeMouton(listeMoutons);
 		
-		
-		// test
-		
-		List<Troupeau> listeTroupeau = new ArrayList<Troupeau>();
-		listeTroupeau.add(new Troupeau("Les peureux"));
-		listeTroupeau.add(new Troupeau("Les frises"));
-		listeTroupeau.add(new Troupeau("Les aventureux"));
-		this.listeTroupeauVue.afficherListeTroupeau(listeTroupeau);
-		
+		this.listeTroupeauVue.afficherListeTroupeau(troupeauDAO.listerTousLesTroupeaux());		
 		
 		scenePrincipale.setTitle("Gestion de la ferme");
 		scenePrincipale.setScene(this.sceneListeTroupeau);
@@ -103,6 +98,8 @@ public class FermeVue extends Application
 	public void naviguerListeTroupeau()
 	{
 		this.scenePrincipale.setScene(this.sceneListeTroupeau);	
+		this.listeTroupeauVue.afficherListeTroupeau(troupeauDAO.listerTousLesTroupeaux());		
+		// La super vue est un peu un controleur de vues
 	}
 	
 }

@@ -38,6 +38,8 @@ public class ListeTroupeauVue extends VBox
 				}
 			});
 		
+		this.getChildren().clear(); // TODO optimiser avec une mise a jour differentielle ?
+		
 		this.getChildren().add(actionAjouter);
 		
 		this.listeTroupeau = listeTroupeau;
