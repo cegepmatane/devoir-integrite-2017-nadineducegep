@@ -38,16 +38,21 @@ public class FermeVue extends Application
 	
 	protected Stage scenePrincipale = null;
 		
-	protected MoutonVue moutonVue = null;
 	protected MoutonControleur moutonControleur = null;
+	
+	protected MoutonVue moutonVue = null;
+	
+	protected EditeurTroupeau editeurTroupeauControleur = null;
+	
 	protected ListeMoutonVue listeMoutonVue = null;
 	protected FormulaireAjouterTroupeauVue formulaireAjouterTroupeauVue = null;
-	
 	protected ListeTroupeauVue listeTroupeauVue = null;
-	protected EditeurTroupeau editeurTroupeauControleur = null;
+	protected FormulaireModifierTroupeauVue formulaireModifierTroupeauVue = null;
 	
 	protected Scene sceneListeTroupeau = null;
 	protected Scene sceneFormulaireAjouterTroupeau = null;
+	protected Scene sceneFormulaireModifierTroupeau = null;
+	
 	protected TroupeauDAO troupeauDAO = null; // TODO peut-être ameliorer cette architecture
 	
 	@Override
@@ -71,7 +76,12 @@ public class FermeVue extends Application
 		this.editeurTroupeauControleur.setFormulaireAjouterTroupeauVue(formulaireAjouterTroupeauVue);
 		this.formulaireAjouterTroupeauVue.setControleur(this.editeurTroupeauControleur);
 		this.sceneFormulaireAjouterTroupeau = new Scene(this.formulaireAjouterTroupeauVue, 500,500);
-
+		
+		this.formulaireModifierTroupeauVue = new FormulaireModifierTroupeauVue();
+		this.editeurTroupeauControleur.setFormulaireModifierTroupeauVue(formulaireModifierTroupeauVue);
+		this.formulaireModifierTroupeauVue.setControleur(this.editeurTroupeauControleur);
+		this.sceneFormulaireModifierTroupeau = new Scene(this.formulaireModifierTroupeauVue, 500,500);
+		
 		// test		
 		/*
 		List<Mouton> listeMoutons = new ArrayList<Mouton>();
@@ -104,7 +114,7 @@ public class FermeVue extends Application
 	}
 	public void naviguerFormulaireModifierTroupeau()
 	{
-		//this.scenePrincipale.setScene(sceneFormulaireModifierTroupeau);	
+		this.scenePrincipale.setScene(sceneFormulaireModifierTroupeau);	
 	}
 	
 	

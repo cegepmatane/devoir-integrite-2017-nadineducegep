@@ -4,6 +4,7 @@ import com.fermedelest.appinventaire.accesseur.TroupeauDAO;
 import com.fermedelest.appinventaire.modele.Troupeau;
 import com.fermedelest.appinventaire.vue.FermeVue;
 import com.fermedelest.appinventaire.vue.FormulaireAjouterTroupeauVue;
+import com.fermedelest.appinventaire.vue.FormulaireModifierTroupeauVue;
 import com.fermedelest.appinventaire.vue.ListeTroupeauVue;
 
 public class EditeurTroupeau {
@@ -11,12 +12,17 @@ public class EditeurTroupeau {
 	protected FermeVue fermeVue;
 	protected ListeTroupeauVue listeTroupeauVue = null;
 	protected FormulaireAjouterTroupeauVue formulaireAjouterTroupeauVue;
+	protected FormulaireModifierTroupeauVue formulaireModifierTroupeauVue;
 	
 	public EditeurTroupeau(FermeVue fermeVue)
 	{
 		this.fermeVue = fermeVue;		
 	}
 	
+	public void setFormulaireModifierTroupeauVue(FormulaireModifierTroupeauVue formulaireModifierTroupeauVue) {
+		this.formulaireModifierTroupeauVue = formulaireModifierTroupeauVue;
+	}
+
 	public void setListeTroupeauVue(ListeTroupeauVue listeTroupeauVue) {
 		this.listeTroupeauVue = listeTroupeauVue;
 	}
@@ -28,6 +34,11 @@ public class EditeurTroupeau {
 	public void naviguerFormulaireAjouter()
 	{
 		fermeVue.naviguerFormulaireAjouterTroupeau();
+	}
+	
+	public void naviguerFormulaireModifier()
+	{
+		fermeVue.naviguerFormulaireModifierTroupeau();
 	}
 	
 	public void ajouterTroupeau()

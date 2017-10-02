@@ -17,7 +17,7 @@ import javafx.scene.text.Text;
 public class ListeTroupeauVue extends VBox
 {
 	protected List<Troupeau> listeTroupeau = null;
-	protected EditeurTroupeau listeTroupeauControleur = null;
+	protected EditeurTroupeau editeurTroupeauControleur = null;
 	
 	public ListeTroupeauVue()
 	{
@@ -34,7 +34,7 @@ public class ListeTroupeauVue extends VBox
 				@Override
 				public void handle(ActionEvent evenement) 
 				{
-					listeTroupeauControleur.naviguerFormulaireAjouter();
+					editeurTroupeauControleur.naviguerFormulaireAjouter();
 				}
 			});
 		
@@ -50,7 +50,7 @@ public class ListeTroupeauVue extends VBox
 				@Override
 				public void handle(ActionEvent evenement) 
 				{
-					
+					editeurTroupeauControleur.naviguerFormulaireModifier();
 				}
 			});
 			
@@ -66,7 +66,7 @@ public class ListeTroupeauVue extends VBox
 	
 	public void setControleur(EditeurTroupeau listeTroupeauControleur)
 	{
-		this.listeTroupeauControleur = listeTroupeauControleur;
+		this.editeurTroupeauControleur = listeTroupeauControleur;
 	}
 	
 }
