@@ -73,6 +73,7 @@ public class FermeVue extends Application
 		this.sceneFormulaireAjouterTroupeau = new Scene(this.formulaireAjouterTroupeauVue, 500,500);
 
 		// test		
+		/*
 		List<Mouton> listeMoutons = new ArrayList<Mouton>();
 		listeMoutons.add(new Mouton("Dolly"));
 		listeMoutons.add(new Mouton("Ardoise"));
@@ -80,7 +81,8 @@ public class FermeVue extends Application
 		listeMoutons.add(new Mouton("Laineux"));
 		listeMoutons.add(new Mouton("Atchoum"));
 		this.listeMoutonVue = new ListeMoutonVue();
-		this.listeMoutonVue.afficherListeMouton(listeMoutons);
+		this.listeMoutonVue.afficherListeMouton(listeMoutons);*/
+		
 		
 		this.listeTroupeauVue.afficherListeTroupeau(troupeauDAO.listerTousLesTroupeaux());		
 		
@@ -90,17 +92,21 @@ public class FermeVue extends Application
 	}
 	protected Scene scene = null;
 	
-	public void naviguerFormulaireAjouterTroupeau()
-	{
-		this.scenePrincipale.setScene(sceneFormulaireAjouterTroupeau);	
-	}
-	
 	public void naviguerListeTroupeau()
 	{
 		this.scenePrincipale.setScene(this.sceneListeTroupeau);	
 		this.listeTroupeauVue.afficherListeTroupeau(troupeauDAO.listerTousLesTroupeaux());		
 		// La super vue est un peu un controleur de vues
 	}
+	public void naviguerFormulaireAjouterTroupeau()
+	{
+		//this.scenePrincipale.setScene(sceneFormulaireModifierTroupeau);	
+	}
+	public void naviguerFormulaireModifierTroupeau()
+	{
+		this.scenePrincipale.setScene(sceneFormulaireAjouterTroupeau);	
+	}
+	
 	
 }
 

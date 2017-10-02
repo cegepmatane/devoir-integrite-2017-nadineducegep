@@ -45,10 +45,19 @@ public class ListeTroupeauVue extends VBox
 		this.listeTroupeau = listeTroupeau;
 		for(Troupeau troupeau:listeTroupeau)
 		{
+			Button boutonModifier = new Button("Modifier");
+			boutonModifier.setOnAction(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle(ActionEvent evenement) 
+				{
+					
+				}
+			});
+			
 			HBox ligneVisuelle = new HBox();
 			System.out.println(troupeau.getNom());
 			ligneVisuelle.getChildren().add(new Text(troupeau.getNom()));
-			ligneVisuelle.getChildren().add(new Button("Modifier"));
+			ligneVisuelle.getChildren().add(boutonModifier);
 			ligneVisuelle.getChildren().add(new Button("Supprimer"));
 			this.getChildren().add(ligneVisuelle);
 		}
