@@ -68,18 +68,25 @@ public class FormulaireModifierTroupeauVue extends VBox
 		this.champsNom.setText(troupeau.getNom());
 		this.champsEcurie.setText(troupeau.getEcurie());
 		
+		
+		this.getChildren().add(new Text(""));
+		this.getChildren().add(new Text("Liste des moutons du troupeau"));
+		this.getChildren().add(new Text(""));
+		this.getChildren().add(new Button("Ajouter un mouton"));
+		
 		List<Mouton> listeMoutons = troupeau.getListeMoutons();
 		for(Mouton mouton:listeMoutons)
 		{
 			HBox ligneVisuelle = new HBox();
 			System.out.println("Mouton : " + mouton.getNom());
 			ligneVisuelle.getChildren().add(new Text(mouton.getNom()));
+			ligneVisuelle.getChildren().add(new Button("Modifier"));
+			ligneVisuelle.getChildren().add(new Button("Supprimer"));
+			
 			this.getChildren().add(ligneVisuelle);
 		}
 		
 		/*
-		 * 		for(Troupeau troupeau:listeTroupeau)
-		{
 			Button boutonModifier = new Button("Modifier");
 			boutonModifier.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
@@ -88,13 +95,6 @@ public class FormulaireModifierTroupeauVue extends VBox
 					editeurTroupeauControleur.naviguerFormulaireModifier(troupeau);
 				}
 			});
-			
-			HBox ligneVisuelle = new HBox();
-			System.out.println(troupeau.getNom());
-			ligneVisuelle.getChildren().add(new Text(troupeau.getNom()));
-			ligneVisuelle.getChildren().add(boutonModifier);
-			ligneVisuelle.getChildren().add(new Button("Supprimer"));
-			this.getChildren().add(ligneVisuelle);
 		}
 
 		 * */
