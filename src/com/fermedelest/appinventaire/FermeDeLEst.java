@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.fermedelest.appinventaire.accesseur.MoutonDAO;
 import com.fermedelest.appinventaire.accesseur.TroupeauDAO;
-import com.fermedelest.appinventaire.controleur.MoutonControleur;
+import com.fermedelest.appinventaire.controleur.EditeurMouton;
 import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
 import com.fermedelest.appinventaire.vue.FermeVue;

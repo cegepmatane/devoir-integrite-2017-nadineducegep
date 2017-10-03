@@ -2,6 +2,7 @@ package com.fermedelest.appinventaire.vue;
 
 import java.util.List;
 
+import com.fermedelest.appinventaire.controleur.EditeurMouton;
 import com.fermedelest.appinventaire.controleur.EditeurTroupeau;
 import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
@@ -22,6 +23,8 @@ public class FormulaireModifierTroupeauVue extends VBox
 	protected TextField champsNom = null;
 	protected TextField champsEcurie = null;
 	protected EditeurTroupeau editeurTroupeau = null;
+	// seulement pour la gestion de la sous-vue de liste de moutons
+	protected EditeurMouton editeurMouton = null;
 	
 	public FormulaireModifierTroupeauVue()
 	{
@@ -72,7 +75,16 @@ public class FormulaireModifierTroupeauVue extends VBox
 		this.getChildren().add(new Text(""));
 		this.getChildren().add(new Text("Liste des moutons du troupeau"));
 		this.getChildren().add(new Text(""));
-		this.getChildren().add(new Button("Ajouter un mouton"));
+		Button boutonAjouterMouton = new Button("Ajouter un mouton");
+		boutonAjouterMouton.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent evenement) {
+				
+				//int id_troupeau = troupeau.getId();
+				editeurMouton.naviguerFormulaireAjouterMouton();
+				
+			}});
+		this.getChildren().add(boutonAjouterMouton);
 		
 		List<Mouton> listeMoutons = troupeau.getListeMoutons();
 		for(Mouton mouton:listeMoutons)
@@ -82,7 +94,7 @@ public class FormulaireModifierTroupeauVue extends VBox
 				@Override
 				public void handle(ActionEvent evenement) 
 				{
-					//editeurTroupeau.naviguerFormulaireModifierMouton(mouton);
+					//editeurMouton.naviguerFormulaireModifierMouton(mouton);
 				}
 			});
 			
@@ -100,5 +112,9 @@ public class FormulaireModifierTroupeauVue extends VBox
 	public void setControleur(EditeurTroupeau controleur)
 	{
 		this.editeurTroupeau = controleur;
+	}
+	public void setControleurMouton(EditeurMouton controleur)
+	{
+		this.editeurMouton = controleur;
 	}
 }

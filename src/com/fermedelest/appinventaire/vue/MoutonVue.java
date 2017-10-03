@@ -1,6 +1,6 @@
 package com.fermedelest.appinventaire.vue;
 
-import com.fermedelest.appinventaire.controleur.MoutonControleur;
+import com.fermedelest.appinventaire.controleur.EditeurMouton;
 import com.fermedelest.appinventaire.modele.Mouton;
 
 import javafx.scene.layout.HBox;
@@ -31,8 +31,8 @@ public class MoutonVue extends HBox
 	}
 	
 	
-	protected MoutonControleur moutonControleur = null;
-	public void setControleur(MoutonControleur moutonControleur)
+	protected EditeurMouton moutonControleur = null;
+	public void setControleur(EditeurMouton moutonControleur)
 	{
 		this.moutonControleur = moutonControleur;
 	}
