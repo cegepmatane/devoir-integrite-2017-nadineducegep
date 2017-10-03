@@ -116,6 +116,7 @@ public class FermeVue extends Application
 	}
 	public void naviguerFormulaireAjouterMouton()
 	{
+		
 		this.scenePrincipale.setScene(sceneFormulaireAjouterMouton);	
 	}
 	
