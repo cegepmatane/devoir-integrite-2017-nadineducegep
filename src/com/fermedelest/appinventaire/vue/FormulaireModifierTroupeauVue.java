@@ -77,27 +77,24 @@ public class FormulaireModifierTroupeauVue extends VBox
 		List<Mouton> listeMoutons = troupeau.getListeMoutons();
 		for(Mouton mouton:listeMoutons)
 		{
-			HBox ligneVisuelle = new HBox();
-			System.out.println("Mouton : " + mouton.getNom());
-			ligneVisuelle.getChildren().add(new Text(mouton.getNom()));
-			ligneVisuelle.getChildren().add(new Button("Modifier"));
-			ligneVisuelle.getChildren().add(new Button("Supprimer"));
-			
-			this.getChildren().add(ligneVisuelle);
-		}
-		
-		/*
 			Button boutonModifier = new Button("Modifier");
 			boutonModifier.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
 				public void handle(ActionEvent evenement) 
 				{
-					editeurTroupeauControleur.naviguerFormulaireModifier(troupeau);
+					//editeurTroupeau.naviguerFormulaireModifierMouton(mouton);
 				}
 			});
+			
+			HBox ligneVisuelle = new HBox();
+			System.out.println("Mouton : " + mouton.getNom());
+			ligneVisuelle.getChildren().add(new Text(mouton.getNom()));
+			ligneVisuelle.getChildren().add(boutonModifier);
+			ligneVisuelle.getChildren().add(new Button("Supprimer"));
+			
+			this.getChildren().add(ligneVisuelle);
 		}
-
-		 * */
+		
 	}
 
 	public void setControleur(EditeurTroupeau controleur)
