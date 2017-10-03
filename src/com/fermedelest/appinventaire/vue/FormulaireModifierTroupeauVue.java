@@ -1,6 +1,9 @@
 package com.fermedelest.appinventaire.vue;
 
+import java.util.List;
+
 import com.fermedelest.appinventaire.controleur.EditeurTroupeau;
+import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
 import javafx.event.ActionEvent;
@@ -10,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class FormulaireModifierTroupeauVue extends VBox 
 {
@@ -63,6 +67,37 @@ public class FormulaireModifierTroupeauVue extends VBox
 		this.troupeau = troupeau;
 		this.champsNom.setText(troupeau.getNom());
 		this.champsEcurie.setText(troupeau.getEcurie());
+		
+		List<Mouton> listeMoutons = troupeau.getListeMoutons();
+		for(Mouton mouton:listeMoutons)
+		{
+			HBox ligneVisuelle = new HBox();
+			System.out.println("Mouton : " + mouton.getNom());
+			ligneVisuelle.getChildren().add(new Text(mouton.getNom()));
+			this.getChildren().add(ligneVisuelle);
+		}
+		
+		/*
+		 * 		for(Troupeau troupeau:listeTroupeau)
+		{
+			Button boutonModifier = new Button("Modifier");
+			boutonModifier.setOnAction(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle(ActionEvent evenement) 
+				{
+					editeurTroupeauControleur.naviguerFormulaireModifier(troupeau);
+				}
+			});
+			
+			HBox ligneVisuelle = new HBox();
+			System.out.println(troupeau.getNom());
+			ligneVisuelle.getChildren().add(new Text(troupeau.getNom()));
+			ligneVisuelle.getChildren().add(boutonModifier);
+			ligneVisuelle.getChildren().add(new Button("Supprimer"));
+			this.getChildren().add(ligneVisuelle);
+		}
+
+		 * */
 	}
 
 	public void setControleur(EditeurTroupeau controleur)

@@ -44,7 +44,6 @@ public class FermeVue extends Application
 	
 	protected EditeurTroupeau editeurTroupeauControleur = null;
 	
-	protected ListeMoutonVue listeMoutonVue = null;
 	protected FormulaireAjouterTroupeauVue formulaireAjouterTroupeauVue = null;
 	protected ListeTroupeauVue listeTroupeauVue = null;
 	protected FormulaireModifierTroupeauVue formulaireModifierTroupeauVue = null;
@@ -80,19 +79,7 @@ public class FermeVue extends Application
 		this.formulaireModifierTroupeauVue = new FormulaireModifierTroupeauVue();
 		this.editeurTroupeauControleur.setFormulaireModifierTroupeauVue(formulaireModifierTroupeauVue);
 		this.formulaireModifierTroupeauVue.setControleur(this.editeurTroupeauControleur);
-		this.sceneFormulaireModifierTroupeau = new Scene(this.formulaireModifierTroupeauVue, 500,500);
-		
-		// test		
-		/*
-		List<Mouton> listeMoutons = new ArrayList<Mouton>();
-		listeMoutons.add(new Mouton("Dolly"));
-		listeMoutons.add(new Mouton("Ardoise"));
-		listeMoutons.add(new Mouton("Lactee"));
-		listeMoutons.add(new Mouton("Laineux"));
-		listeMoutons.add(new Mouton("Atchoum"));
-		this.listeMoutonVue = new ListeMoutonVue();
-		this.listeMoutonVue.afficherListeMouton(listeMoutons);*/
-		
+		this.sceneFormulaireModifierTroupeau = new Scene(this.formulaireModifierTroupeauVue, 500,500);		
 		
 		this.listeTroupeauVue.afficherListeTroupeau(troupeauDAO.listerTousLesTroupeaux());		
 		
