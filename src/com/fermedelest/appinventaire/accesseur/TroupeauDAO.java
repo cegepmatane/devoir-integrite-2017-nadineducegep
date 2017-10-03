@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
 public class TroupeauDAO {
@@ -57,6 +58,28 @@ public class TroupeauDAO {
 		try {
 			
 			Statement requeteTroupeau = connection.createStatement();
+			ResultSet curseurTroupeau = requeteTroupeau.executeQuery("SELECT id_troupeau, nom FROM troupeau WHERE id_troupeau = " + id_troupeau);
+			curseurTroupeau.next();
+			
+			String nom = curseurTroupeau.getString("nom");
+			String ecurie = curseurTroupeau.getString("ecurie");
+			
+			troupeau = new Troupeau(nom);
+			troupeau.setEcurie(ecurie);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return troupeau;
+	}
+	
+	
+	public Troupeau lireTroupeauAvecMoutons(int id_troupeau)
+	{		
+		Troupeau troupeau = null;
+		try {
+			
+			Statement requeteTroupeau = connection.createStatement();
 			ResultSet curseurTroupeau = requeteTroupeau.executeQuery("SELECT * FROM troupeau WHERE id_troupeau = " + id_troupeau);
 			curseurTroupeau.next();
 			
@@ -69,6 +92,33 @@ public class TroupeauDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		List<Mouton> listeDesMoutons = new ArrayList<Mouton>();
+		
+		Statement requeteListeMoutons = null;
+		try {
+			requeteListeMoutons = connection.createStatement();
+			ResultSet curseurMouton = requeteListeMoutons.executeQuery("SELECT nom, description FROM mouton WHERE id_troupeau = " + id_troupeau);
+			// TODO requete preparee
+			
+			//System.out.println("avant");
+			while(curseurMouton.next())
+			{
+				String nom = curseurMouton.getString("nom");
+				String description = curseurMouton.getString("description");
+				
+				Mouton mouton = new Mouton(nom);
+				mouton.setDescription(description);
+				
+				listeDesMoutons.add(mouton);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		troupeau.setListeMoutons(listeDesMoutons);
+		
 		return troupeau;
 	}
 	

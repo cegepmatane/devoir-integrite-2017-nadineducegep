@@ -39,7 +39,8 @@ public class EditeurTroupeau {
 	public void naviguerFormulaireModifier(Troupeau troupeau)
 	{
 		System.out.println("Naviguer pour modifier le troupeau " + troupeau.getId());
-		// il y a des situations ou l'objet de liste est incomplet et un appel au dao est requis
+		TroupeauDAO troupeauDAO = new TroupeauDAO();
+		troupeau = troupeauDAO.lireTroupeauAvecMoutons(troupeau.getId());
 		this.formulaireModifierTroupeauVue.afficherTroupeau(troupeau);
 		fermeVue.naviguerFormulaireModifierTroupeau();
 	}

@@ -5,18 +5,18 @@ import java.util.List;
 public class Troupeau {
 	
 	protected int id;
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	protected String nom;
 	protected String ecurie;
 	protected List<Mouton> listeMoutons = null;
 	
+	public List<Mouton> getListeMoutons() {
+		return listeMoutons;
+	}
+
+	public void setListeMoutons(List<Mouton> listeMoutons) {
+		this.listeMoutons = listeMoutons;
+	}
+
 	public Troupeau(String nom)
 	{
 		this.nom = nom;
@@ -37,6 +37,14 @@ public class Troupeau {
 
 	public void setEcurie(String ecurie) {
 		this.ecurie = ecurie;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }
