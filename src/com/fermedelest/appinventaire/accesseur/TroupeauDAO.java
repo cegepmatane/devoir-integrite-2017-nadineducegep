@@ -12,6 +12,7 @@ import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
 public class TroupeauDAO {
+	public static String SQL_LISTER_TROUPEAU = "SELECT * FROM troupeau";
 	
 	private Connection connection = null;
 	public TroupeauDAO()
@@ -23,10 +24,11 @@ public class TroupeauDAO {
 	{
 		List<Troupeau> listeDesTroupeaus = new ArrayList<Troupeau>();
 		
+		
 			Statement requeteListeTroupeaus = null;
 			try {
 				requeteListeTroupeaus = connection.createStatement();
-				ResultSet curseurTroupeau = requeteListeTroupeaus.executeQuery("SELECT * FROM troupeau");
+				ResultSet curseurTroupeau = requeteListeTroupeaus.executeQuery(requete);
 				
 				//System.out.println("avant");
 				while(curseurTroupeau.next())
@@ -57,8 +59,9 @@ public class TroupeauDAO {
 		Troupeau troupeau = null;
 		try {
 			
+			String SQL_LIRE_TROUPEAU = "SELECT id_troupeau, nom FROM troupeau WHERE id_troupeau = " + id_troupeau;
 			Statement requeteTroupeau = connection.createStatement();
-			ResultSet curseurTroupeau = requeteTroupeau.executeQuery("SELECT id_troupeau, nom FROM troupeau WHERE id_troupeau = " + id_troupeau);
+			ResultSet curseurTroupeau = requeteTroupeau.executeQuery(requete);
 			curseurTroupeau.next();
 			
 			String nom = curseurTroupeau.getString("nom");
