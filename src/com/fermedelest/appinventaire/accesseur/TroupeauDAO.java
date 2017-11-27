@@ -103,11 +103,13 @@ public class TroupeauDAO {
 		
 		List<Mouton> listeDesMoutons = new ArrayList<Mouton>();
 		
-		Statement requeteListeMoutons = null;
+		String SQL_LISTER_MOUTON_SELON_TROUPEAU = "SELECT nom, description FROM mouton WHERE id_troupeau = ?";
+		
+		PreparedStatement requeteListeMoutons = null;
 		try {
-			requeteListeMoutons = connection.createStatement();
-			ResultSet curseurMouton = requeteListeMoutons.executeQuery("SELECT nom, description FROM mouton WHERE id_troupeau = " + id_troupeau);
-			// TODO requete preparee
+			requeteListeMoutons = connection.prepareStatement(SQL_LISTER_MOUTON_SELON_TROUPEAU);
+			requeteListeMoutons.setInt(1,  id_troupeau);
+			ResultSet curseurMouton = requeteListeMoutons.executeQuery();
 			
 			//System.out.println("avant");
 			while(curseurMouton.next())
@@ -135,10 +137,11 @@ public class TroupeauDAO {
 	{
 		try {
 			
-			Statement requeteAjouterTroupeau = connection.createStatement();
-			requeteAjouterTroupeau.executeUpdate(
-					"INSERT INTO troupeau(nom, ecurie) VALUES('"+troupeau.getNom()+"','"+troupeau.getEcurie()+"')");
-			// TODO changer en requete preparee
+			String SQL_AJOUTER_TROUPEAU = "INSERT INTO troupeau(nom, ecurie) VALUES(?,?)";
+			PreparedStatement requeteAjouterTroupeau = connection.prepareStatement(SQL_AJOUTER_TROUPEAU);
+			requeteAjouterTroupeau.setString(1,  troupeau.getNom());
+			requeteAjouterTroupeau.setString(2,  troupeau.getEcurie());
+			requeteAjouterTroupeau.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -151,10 +154,12 @@ public class TroupeauDAO {
 	{
 		try {
 			
-			Statement requeteModifierTroupeau = connection.createStatement();
-			requeteModifierTroupeau.executeUpdate(
-					"UPDATE troupeau SET nom = '"+troupeau.getNom()+"', ecurie = '"+troupeau.getEcurie()+"' WHERE id_troupeau = "+troupeau.getId());
-			// TODO changer en requete preparee
+			String SQL_MODIFIER_TROUPEAU = "UPDATE troupeau SET nom = ?, ecurie = ? WHERE id_troupeau = ?";
+			PreparedStatement requeteModifierTroupeau = connection.prepareStatement(SQL_MODIFIER_TROUPEAU);
+			requeteModifierTroupeau.setString(1, troupeau.getNom());
+			requeteModifierTroupeau.setString(2, troupeau.getEcurie());
+			requeteModifierTroupeau.setInt(3, troupeau.getId());
+			requeteModifierTroupeau.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
