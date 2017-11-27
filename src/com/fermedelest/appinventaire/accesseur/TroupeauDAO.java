@@ -2,6 +2,7 @@ package com.fermedelest.appinventaire.accesseur;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,7 +13,7 @@ import com.fermedelest.appinventaire.modele.Mouton;
 import com.fermedelest.appinventaire.modele.Troupeau;
 
 public class TroupeauDAO {
-	public static String SQL_LISTER_TROUPEAU = "SELECT * FROM troupeau";
+	public static String SQL_LISTER_TROUPEAUX = "SELECT * FROM troupeau";
 	
 	private Connection connection = null;
 	public TroupeauDAO()
@@ -28,7 +29,7 @@ public class TroupeauDAO {
 			Statement requeteListeTroupeaus = null;
 			try {
 				requeteListeTroupeaus = connection.createStatement();
-				ResultSet curseurTroupeau = requeteListeTroupeaus.executeQuery(requete);
+				ResultSet curseurTroupeau = requeteListeTroupeaus.executeQuery(SQL_LISTER_TROUPEAUX);
 				
 				//System.out.println("avant");
 				while(curseurTroupeau.next())
@@ -59,9 +60,10 @@ public class TroupeauDAO {
 		Troupeau troupeau = null;
 		try {
 			
-			String SQL_LIRE_TROUPEAU = "SELECT id_troupeau, nom FROM troupeau WHERE id_troupeau = " + id_troupeau;
-			Statement requeteTroupeau = connection.createStatement();
-			ResultSet curseurTroupeau = requeteTroupeau.executeQuery(requete);
+			String SQL_LIRE_TROUPEAU = "SELECT id_troupeau, nom FROM troupeau WHERE id_troupeau = ?";
+			PreparedStatement requeteTroupeau = connection.prepareStatement(SQL_LIRE_TROUPEAU);
+			requeteTroupeau.setInt(1, id_troupeau);
+			ResultSet curseurTroupeau = requeteTroupeau.executeQuery();
 			curseurTroupeau.next();
 			
 			String nom = curseurTroupeau.getString("nom");
@@ -81,9 +83,12 @@ public class TroupeauDAO {
 	{		
 		Troupeau troupeau = null;
 		try {
+
+			String SQL_LIRE_TROUPEAU_AVEC_MOUTON = "SELECT * FROM troupeau WHERE id_troupeau = ?";
 			
-			Statement requeteTroupeau = connection.createStatement();
-			ResultSet curseurTroupeau = requeteTroupeau.executeQuery("SELECT * FROM troupeau WHERE id_troupeau = " + id_troupeau);
+			PreparedStatement requeteTroupeau = connection.prepareStatement(SQL_LIRE_TROUPEAU_AVEC_MOUTON);
+			requeteTroupeau.setInt(1, id_troupeau);
+			ResultSet curseurTroupeau = requeteTroupeau.executeQuery();
 			curseurTroupeau.next();
 			
 			String nom = curseurTroupeau.getString("nom");
