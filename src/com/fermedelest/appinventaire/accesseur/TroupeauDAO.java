@@ -14,6 +14,11 @@ import com.fermedelest.appinventaire.modele.Troupeau;
 
 public class TroupeauDAO {
 	public static String SQL_LISTER_TROUPEAUX = "SELECT * FROM troupeau";
+	public static String SQL_LIRE_TROUPEAU = "SELECT id_troupeau, nom FROM troupeau WHERE id_troupeau = ?";
+	public static String SQL_LIRE_TROUPEAU_AVEC_MOUTON = "SELECT * FROM troupeau WHERE id_troupeau = ?";
+	public static String SQL_LISTER_MOUTON_SELON_TROUPEAU = "SELECT nom, description FROM mouton WHERE id_troupeau = ?";			
+	public static String SQL_AJOUTER_TROUPEAU = "INSERT INTO troupeau(nom, ecurie) VALUES(?,?)";
+	public static String SQL_MODIFIER_TROUPEAU = "UPDATE troupeau SET nom = ?, ecurie = ? WHERE id_troupeau = ?";
 	
 	private Connection connection = null;
 	public TroupeauDAO()
@@ -60,7 +65,6 @@ public class TroupeauDAO {
 		Troupeau troupeau = null;
 		try {
 			
-			String SQL_LIRE_TROUPEAU = "SELECT id_troupeau, nom FROM troupeau WHERE id_troupeau = ?";
 			PreparedStatement requeteTroupeau = connection.prepareStatement(SQL_LIRE_TROUPEAU);
 			requeteTroupeau.setInt(1, id_troupeau);
 			ResultSet curseurTroupeau = requeteTroupeau.executeQuery();
@@ -82,10 +86,7 @@ public class TroupeauDAO {
 	public Troupeau lireTroupeauAvecMoutons(int id_troupeau)
 	{		
 		Troupeau troupeau = null;
-		try {
-
-			String SQL_LIRE_TROUPEAU_AVEC_MOUTON = "SELECT * FROM troupeau WHERE id_troupeau = ?";
-			
+		try {			
 			PreparedStatement requeteTroupeau = connection.prepareStatement(SQL_LIRE_TROUPEAU_AVEC_MOUTON);
 			requeteTroupeau.setInt(1, id_troupeau);
 			ResultSet curseurTroupeau = requeteTroupeau.executeQuery();
@@ -102,9 +103,7 @@ public class TroupeauDAO {
 		}
 		
 		List<Mouton> listeDesMoutons = new ArrayList<Mouton>();
-		
-		String SQL_LISTER_MOUTON_SELON_TROUPEAU = "SELECT nom, description FROM mouton WHERE id_troupeau = ?";
-		
+				
 		PreparedStatement requeteListeMoutons = null;
 		try {
 			requeteListeMoutons = connection.prepareStatement(SQL_LISTER_MOUTON_SELON_TROUPEAU);
@@ -137,7 +136,6 @@ public class TroupeauDAO {
 	{
 		try {
 			
-			String SQL_AJOUTER_TROUPEAU = "INSERT INTO troupeau(nom, ecurie) VALUES(?,?)";
 			PreparedStatement requeteAjouterTroupeau = connection.prepareStatement(SQL_AJOUTER_TROUPEAU);
 			requeteAjouterTroupeau.setString(1,  troupeau.getNom());
 			requeteAjouterTroupeau.setString(2,  troupeau.getEcurie());
@@ -154,7 +152,6 @@ public class TroupeauDAO {
 	{
 		try {
 			
-			String SQL_MODIFIER_TROUPEAU = "UPDATE troupeau SET nom = ?, ecurie = ? WHERE id_troupeau = ?";
 			PreparedStatement requeteModifierTroupeau = connection.prepareStatement(SQL_MODIFIER_TROUPEAU);
 			requeteModifierTroupeau.setString(1, troupeau.getNom());
 			requeteModifierTroupeau.setString(2, troupeau.getEcurie());
